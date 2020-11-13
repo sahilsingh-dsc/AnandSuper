@@ -5,6 +5,7 @@ import com.tetravalstartups.anandsuper.auth.OTPResponse;
 import com.tetravalstartups.anandsuper.auth.Register;
 import com.tetravalstartups.anandsuper.modules.course.CourseResponse;
 import com.tetravalstartups.anandsuper.modules.course.CourseTopic;
+import com.tetravalstartups.anandsuper.modules.course.GetVideoList;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -38,4 +39,8 @@ public interface UserLogin {
     @POST("Get-Course-Topic")
     Call<CourseTopic> getCourseTopic(@Field("course_id") String course_id,
                                      @Field("language") String language);
+
+    @FormUrlEncoded
+    @POST("Get-Video-List")
+    Call<GetVideoList> getVideoList(@Field("topic_id") String topic_id);
 }

@@ -107,7 +107,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
             public void onResponse(Call<Register> call, Response<Register> response) {
                 Log.e(TAG, "onResponse: " + response.code() + " " + response.message() + " " + response.body().getUserId());
                 String user_id = response.body().getUserId().toString();
-                if (response.code() == 200) {
+                if (response.body().getStatus().equals("success")) {
                     Log.e(TAG, "onResponse: Success");
                     Intent intent = new Intent(SignupActivity.this, OtpActivity.class);
                     intent.putExtra("number", number);

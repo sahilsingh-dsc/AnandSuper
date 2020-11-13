@@ -84,7 +84,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                 Log.e(TAG, "onResponse: " + response.code() + " " + response.message());
-                if (response.code() == 200) {
+                if (response.body().getStatus().equals("success")) {
                     tvLogin.setVisibility(View.VISIBLE);
                     progress_circular.setVisibility(View.GONE);
                     SharedPreferences pref = getSharedPreferences("login", 0);

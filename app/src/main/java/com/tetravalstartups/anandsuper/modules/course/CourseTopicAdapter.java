@@ -1,9 +1,11 @@
 package com.tetravalstartups.anandsuper.modules.course;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -32,6 +34,15 @@ public class CourseTopicAdapter extends RecyclerView.Adapter<CourseTopicAdapter.
     @Override
     public void onBindViewHolder(@NonNull CourseTopicAdapter.CourseTopicViewHolder holder, int position) {
         holder.tvCourseTopic.setText("" + datumList.get(position).getTopic());
+        String topicId = datumList.get(position).getId();
+        holder.lvCourseTopic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, VideoListActivity.class);
+                intent.putExtra("topic_id", topicId);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -41,10 +52,12 @@ public class CourseTopicAdapter extends RecyclerView.Adapter<CourseTopicAdapter.
 
     public class CourseTopicViewHolder extends RecyclerView.ViewHolder {
         private TextView tvCourseTopic;
+        private LinearLayout lvCourseTopic;
 
         public CourseTopicViewHolder(@NonNull View itemView) {
             super(itemView);
             tvCourseTopic = itemView.findViewById(R.id.tvCourseTopic);
+            lvCourseTopic = itemView.findViewById(R.id.lvCourseTopic);
         }
     }
 }

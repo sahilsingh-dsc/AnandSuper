@@ -15,7 +15,8 @@
         android:theme="@style/Theme.AnandSuper"
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup">
-        <activity android:name=".modules.course.CourseTopicActivity"></activity>
+        <activity android:name=".modules.course.VideoListActivity"></activity>
+        <activity android:name=".modules.course.CourseTopicActivity" />
         <activity android:name=".auth.ForgotPasswordActivity" />
         <activity android:name=".auth.OtpActivity" />
         <activity android:name=".auth.SignupActivity" />

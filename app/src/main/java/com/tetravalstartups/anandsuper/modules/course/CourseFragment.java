@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.tetravalstartups.anandsuper.R;
@@ -38,18 +39,18 @@ public class CourseFragment extends Fragment {
 
     private void initView() {
         coursesRecyclerView = view.findViewById(R.id.coursesRecyclerView);
-
+        coursesRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
         UserLogin userLogin = ApiClient.getRetrofitInstance().create(UserLogin.class);
         Call<CourseResponse> call = userLogin.courses();
         call.enqueue(new Callback<CourseResponse>() {
             @Override
             public void onResponse(Call<CourseResponse> call, Response<CourseResponse> response) {
                 Log.e(TAG, "onResponse: " + response.code() + " " + response.message());
-                if (response.code() == 200) {
+                if (response.body().getStatus().equals("success")) {
                     courseAdapter = new CourseAdapter(getContext(), response.body().getData());
                     coursesRecyclerView.setAdapter(courseAdapter);
                     courseAdapter.notifyDataSetChanged();
-                }else if (response.code() == 400) {
+                } else if (response.code() == 400) {
                     Log.e(TAG, "onResponse: " + response.message());
                 } else {
                     Log.e(TAG, "onResponse: Something Went Wrong");

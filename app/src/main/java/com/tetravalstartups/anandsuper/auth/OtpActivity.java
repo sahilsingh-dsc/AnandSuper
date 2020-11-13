@@ -151,7 +151,7 @@ public class OtpActivity extends AppCompatActivity implements View.OnClickListen
             @Override
             public void onResponse(Call<OTPResponse> call, Response<OTPResponse> response) {
                 Log.e(TAG, "onResponse: " + response.code() + " " + response.message());
-                if (response.code() == 200) {
+                if (response.body().getStatus().equals("success")) {
                     tvVerify.setVisibility(View.VISIBLE);
                     progress_circular.setVisibility(View.GONE);
                     Intent intent = new Intent(OtpActivity.this, LoginActivity.class);

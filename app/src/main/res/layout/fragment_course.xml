@@ -18,8 +18,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_margin="16dp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:spanCount="2" />
+          />
     </LinearLayout>
 
 </FrameLayout>

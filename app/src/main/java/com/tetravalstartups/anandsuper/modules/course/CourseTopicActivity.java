@@ -41,7 +41,7 @@ public class CourseTopicActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<CourseTopic> call, Response<CourseTopic> response) {
                 Log.e(TAG, "onResponse: " + response.code() + " " + response.message());
-                if (response.code() == 200) {
+                if (response.body().getStatus().equals("success")) {
                     courseTopicAdapter = new CourseTopicAdapter(CourseTopicActivity.this, response.body().getData());
                     courseTopicRecyclerView.setAdapter(courseTopicAdapter);
                     courseTopicAdapter.notifyDataSetChanged();
