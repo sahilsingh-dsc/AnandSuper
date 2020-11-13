@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,48 +8,49 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorPrimary"/>
+        android:background="@color/colorPrimary" />
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="220dp"
-        android:scaleType="centerCrop"
         android:layout_gravity="top"
-        android:src="@drawable/splash_upper"/>
+        android:scaleType="centerCrop"
+        android:src="@drawable/splash_upper" />
 
     <ImageView
+        android:id="@+id/ivGoBack"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:padding="10dp"
-        android:src="@drawable/ic_baseline_arrow_back_24_auth"/>
+        android:src="@drawable/ic_baseline_arrow_back_24_auth" />
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="220dp"
-        android:scaleType="centerCrop"
         android:layout_gravity="bottom"
-        android:src="@drawable/splash_lower"/>
+        android:scaleType="centerCrop"
+        android:src="@drawable/splash_lower" />
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_gravity="center"
         android:gravity="center"
-        android:layout_gravity="center">
+        android:orientation="vertical">
 
         <ImageView
             android:layout_width="250dp"
             android:layout_height="100dp"
-            android:src="@drawable/as_logo"/>
+            android:src="@drawable/as_logo" />
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_marginEnd="24dp"
             android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
             android:layout_marginBottom="16dp"
             android:orientation="vertical">
 
@@ -60,12 +59,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_textbox_trans"
+                android:hint="Name"
+
+                android:imeOptions="actionNext"
                 android:inputType="textPersonName"
                 android:paddingTop="8dp"
-                android:hint="Name"
+                android:paddingBottom="8dp"
                 android:textColor="@color/colorTextH3"
-                android:textColorHint="@color/colorTextH3"
-                android:paddingBottom="8dp" />
+                android:textColorHint="#F2F2F2" />
 
             <View
                 android:layout_width="match_parent"
@@ -87,12 +88,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_textbox_trans"
+                android:hint="Phone number"
+                android:imeOptions="actionNext"
                 android:inputType="phone"
                 android:paddingTop="8dp"
-                android:hint="Phone number"
+                android:paddingBottom="8dp"
+                android:maxLength="10"
                 android:textColor="@color/colorTextH3"
-                android:textColorHint="@color/colorTextH3"
-                android:paddingBottom="8dp" />
+                android:textColorHint="#F2F2F2" />
 
             <View
                 android:layout_width="match_parent"
@@ -114,12 +117,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_textbox_trans"
+                android:hint="Email"
+                android:imeOptions="actionNext"
                 android:inputType="textEmailAddress"
                 android:paddingTop="8dp"
-                android:hint="Email"
+                android:paddingBottom="8dp"
                 android:textColor="@color/colorTextH3"
-                android:textColorHint="@color/colorTextH3"
-                android:paddingBottom="8dp" />
+                android:textColorHint="#F2F2F2" />
 
             <View
                 android:layout_width="match_parent"
@@ -141,12 +145,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_textbox_trans"
+                android:hint="Password"
+                android:imeOptions="actionNext"
                 android:inputType="textPassword"
                 android:paddingTop="8dp"
-                android:hint="Password"
+                android:paddingBottom="8dp"
                 android:textColor="@color/colorTextH3"
-                android:textColorHint="@color/colorTextH3"
-                android:paddingBottom="8dp" />
+                android:textColorHint="#F2F2F2" />
 
             <View
                 android:layout_width="match_parent"
@@ -168,12 +173,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_textbox_trans"
+                android:hint="Confirm password"
+                android:imeOptions="actionDone"
                 android:inputType="textPassword"
                 android:paddingTop="8dp"
-                android:hint="Confirm password"
+                android:paddingBottom="8dp"
                 android:textColor="@color/colorTextH3"
-                android:textColorHint="@color/colorTextH3"
-                android:paddingBottom="8dp" />
+                android:textColorHint="#F2F2F2" />
 
             <View
                 android:layout_width="match_parent"
@@ -186,28 +192,28 @@
             android:id="@+id/tvLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Login"
-            android:textColor="@color/colorPrimary"
             android:layout_marginStart="64dp"
             android:layout_marginEnd="64dp"
-            android:textStyle="bold"
-            android:textSize="20sp"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"
+            android:background="@drawable/bg_solid_button"
+            android:gravity="center"
             android:paddingStart="64dp"
+            android:paddingTop="8dp"
             android:paddingEnd="64dp"
-            android:background="@drawable/bg_solid_button"/>
+            android:paddingBottom="8dp"
+            android:text="Login"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tvBackToLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Already have an account? Login"
-            android:padding="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="16dp"
-            android:textColor="@color/colorTextH3"/>
+            android:padding="8dp"
+            android:text="Already have an account? Login"
+            android:textColor="@color/colorTextH3" />
 
 
     </LinearLayout>

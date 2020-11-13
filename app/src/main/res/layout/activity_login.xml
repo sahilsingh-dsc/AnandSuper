@@ -57,7 +57,8 @@
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"
                 android:textColor="@color/colorTextH3"
-                android:textColorHint="@color/colorTextH3" />
+                android:textColorHint="#F2F2F2"
+                />
 
             <View
                 android:layout_width="match_parent"
@@ -79,12 +80,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_textbox_trans"
+                android:backgroundTintMode="add"
                 android:hint="Password"
                 android:inputType="textPassword"
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"
+
                 android:textColor="@color/colorTextH3"
-                android:textColorHint="@color/colorTextH3" />
+                android:textColorHint="#F2F2F2" />
 
             <View
                 android:layout_width="match_parent"
@@ -118,8 +121,8 @@
                 android:id="@+id/progress_circular"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:visibility="gone"
-                android:layout_gravity="center" />
+                android:layout_gravity="center"
+                android:visibility="gone" />
         </FrameLayout>
 
         <TextView
@@ -147,7 +150,6 @@
             android:textColor="@color/colorTextH3"
             android:textSize="20sp"
             android:textStyle="bold" />
-
 
     </LinearLayout>
 

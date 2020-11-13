@@ -157,9 +157,10 @@ public class OtpActivity extends AppCompatActivity implements View.OnClickListen
                     Intent intent = new Intent(OtpActivity.this, LoginActivity.class);
                     startActivity(intent);
                     finish();
-                } else if (response.code() == 400){
+                } else if (response.body().getStatus().equals("error")){
                     tvVerify.setVisibility(View.VISIBLE);
                     progress_circular.setVisibility(View.GONE);
+                    Toast.makeText(OtpActivity.this, "Invalid OTP", Toast.LENGTH_LONG).show();
                     Log.e(TAG, "onResponse: Enter Valid OTP" );
                 }
                 else{

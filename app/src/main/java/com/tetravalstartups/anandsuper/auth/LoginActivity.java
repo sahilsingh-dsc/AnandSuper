@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -41,6 +42,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         tvSignUp = findViewById(R.id.tvSignUp);
         etPassword = findViewById(R.id.etPassword);
         etEmail = findViewById(R.id.etEmail);
+
         tvLogin = findViewById(R.id.tvLogin);
         progress_circular = findViewById(R.id.progress_circular);
         sharedpreferences = getSharedPreferences("MySharedPref",
@@ -95,9 +97,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                     startActivity(intent);
                     finish();
-                } else if (response.code() == 400) {
+                } else if (response.body().getStatus().equals("error")) {
                     tvLogin.setVisibility(View.VISIBLE);
                     progress_circular.setVisibility(View.GONE);
+                    Toast.makeText(LoginActivity.this, "Invalid Username Or Password!.", Toast.LENGTH_LONG).show();
                     Log.e(TAG, "onResponse: Invalid Username Or Password");
                 } else {
                     tvLogin.setVisibility(View.VISIBLE);

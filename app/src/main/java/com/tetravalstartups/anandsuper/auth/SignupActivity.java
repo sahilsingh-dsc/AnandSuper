@@ -6,7 +6,9 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -26,6 +28,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
     private EditText etConfirmPassword;
     private TextView tvLogin;
     private TextView tvBackToLogin;
+    private ImageView ivGoBack;
     private static final String TAG = "SignupActivity";
 
     @Override
@@ -44,9 +47,11 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         etConfirmPassword = findViewById(R.id.etConfirmPassword);
         tvLogin = findViewById(R.id.tvLogin);
         tvBackToLogin = findViewById(R.id.tvBackToLogin);
+        ivGoBack = findViewById(R.id.ivGoBack);
 
         tvLogin.setOnClickListener(this);
         tvBackToLogin.setOnClickListener(this);
+        ivGoBack.setOnClickListener(this);
     }
 
     @Override
@@ -57,11 +62,18 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         if (v == tvBackToLogin) {
             backToLogin();
         }
+        if (v == ivGoBack) {
+            Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
+            startActivity(intent);
+            finish();
+//            onBackPressed();
+        }
     }
 
     private void backToLogin() {
         Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
         startActivity(intent);
+        finish();
     }
 
     private void doUiValidation() {
@@ -72,13 +84,13 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
             return;
         }
         String number = etContactNumber.getText().toString();
-        if (TextUtils.isEmpty(number)) {
+        if (TextUtils.isEmpty(number) ) {
             etContactNumber.requestFocus();
-            etContactNumber.setError("Number Required");
+            etContactNumber.setError("Enter Correct Number");
             return;
         }
         String email = etEmail.getText().toString();
-        if (TextUtils.isEmpty(email)) {
+        if (TextUtils.isEmpty(email) || !email.matches("[a-zA-Z0-9._-]+@[a-z]+\\.[a-z]+")) {
             etEmail.requestFocus();
             etEmail.setError("Email Required");
             return;
@@ -95,7 +107,9 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
             etConfirmPassword.setError("Confirm Password");
             return;
         }
-
+        if (!confirmPassword.equals(password)){
+            Toast.makeText(this, "Password Didn't Matched", Toast.LENGTH_SHORT).show();
+        }
         doRegister(name, number, email, password);
     }
 
@@ -115,7 +129,8 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                     Log.e(TAG, "onResponse: " + user_id);
                     startActivity(intent);
                     finish();
-                } else if (response.code() == 400) {
+                } else if (response.body().getStatus().equals("error")) {
+                    Toast.makeText(SignupActivity.this, "The contact is already registered", Toast.LENGTH_LONG).show();
                     Log.e(TAG, "onResponse: Something went Wrong");
                 }
             }
